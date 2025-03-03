@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var speed = 400
 @export var rotation_speed = 30.0
+@export var push_force = 50.0
+@export var friction = 0.9
 
 @onready var animation = $AnimatedSprite2D
 
@@ -20,4 +22,17 @@ func get_input():
 
 func _physics_process(_delta):
 	get_input()
-	move_and_slide()
+	var collision = move_and_collide(velocity * _delta)
+	if collision:
+		var collider = collision.get_collider()
+		if collider is RigidBody2D:
+			var push_direction = velocity.normalized()
+			
+			collider.linear_velocity = push_direction * push_force
+			
+			if collider.linear_velocity.length() > 0:
+				collider.linear_velocity *= friction
+			else:
+				collider.linear_velocity = collider.linear_velocity.move_toward(Vector2.ZERO, friction)
+				
+			collider.linear_damp = 3
