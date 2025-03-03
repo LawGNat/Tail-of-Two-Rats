@@ -51,6 +51,12 @@ click={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Level"
+2d_physics/layer_2="Player"
+2d_physics/layer_5="Pushable"
+
 [physics]
 
 2d/default_gravity=0.0

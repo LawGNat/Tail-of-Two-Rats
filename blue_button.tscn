@@ -6,7 +6,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifmyj"]
 
-[node name="Area2D" type="Area2D"]
+[node name="BlueButton" type="Area2D"]
 script = ExtResource("1_f4nou")
 idle_texture = ExtResource("1_u1ywv")
 pressed_texture = ExtResource("3_1qpn5")
