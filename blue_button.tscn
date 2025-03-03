@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d026447uo25wn"]
 
-[ext_resource type="Script" path="res://blue_button.gd" id="1_f4nou"]
+[ext_resource type="Script" uid="uid://d2mp6yl2ytkq7" path="res://blue_button.gd" id="1_f4nou"]
 [ext_resource type="Texture2D" uid="uid://cjnp0px1kt060" path="res://assets/sprites/buttons/blubutton1.png" id="1_u1ywv"]
 [ext_resource type="Texture2D" uid="uid://d856fuhqi6u" path="res://assets/sprites/buttons/blubutton2.png" id="3_1qpn5"]
 
