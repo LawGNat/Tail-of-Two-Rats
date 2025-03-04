@@ -7,9 +7,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srgcb"]
 size = Vector2(30, 30)
 
-[node name="Box" type="RigidBody2D"]
+[node name="Box" type="RigidBody2D" groups=["box"]]
 collision_layer = 16
-collision_mask = 19
+collision_mask = 27
 physics_material_override = SubResource("PhysicsMaterial_vr1vw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
+@export var player_id: int = 1
 @export var speed = 400
 @export var rotation_speed = 30.0
 @export var push_force = 50.0
 @export var friction = 0.9
+@export var player_1_frames: SpriteFrames
+@export var player_2_frames: SpriteFrames
 
 @onready var animation = $AnimatedSprite2D
 
@@ -36,3 +39,9 @@ func _physics_process(_delta):
 				collider.linear_velocity = collider.linear_velocity.move_toward(Vector2.ZERO, friction)
 				
 			collider.linear_damp = 3
+			
+func _ready() -> void:
+	if player_id == 1:
+		animation.sprite_frames = player_1_frames
+	else:
+		animation.sprite_frames = player_2_frames

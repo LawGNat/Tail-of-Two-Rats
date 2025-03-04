@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=4 uid="uid://dkvty6imsii7t"]
+
+[ext_resource type="PackedScene" uid="uid://7xvfffii4qf6" path="res://scenes/player.tscn" id="1_w8ldq"]
+[ext_resource type="Texture2D" uid="uid://r2napf88kif7" path="res://assets/sprites/level/wall.png" id="2_xgw00"]
+[ext_resource type="PackedScene" uid="uid://d026447uo25wn" path="res://scenes/blue_button.tscn" id="3_qox24"]
+[ext_resource type="PackedScene" uid="uid://p5j580kk3i8x" path="res://scenes/box.tscn" id="4_cr8ts"]
+[ext_resource type="PackedScene" uid="uid://d1un5c5i7tfn0" path="res://scenes/hole.tscn" id="5_e5byi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oqg5n"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uf3vl"]
+texture = ExtResource("2_xgw00")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_oxhuh"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_oqg5n")
+sources/0 = SubResource("TileSetAtlasSource_uf3vl")
+
+[node name="Level1Player1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_w8ldq")]
+position = Vector2(158, 141)
+
+[node name="Level1" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAcAAEAAAAAAAAAAAAcAAIAAAAAAAAAAAAcAAMAAAAAAAAAAAAcAAQAAAAAAAAAAAAcAAUAAAAAAAAAAAAcAAYAAAAAAAAAAAAcAAcAAAAAAAAAAAAcAAgAAAAAAAAAAAAcAAkAAAAAAAAAAAAcAAoAAAAAAAAAAAAcAAsAAAAAAAAAAAAcAAwAAAAAAAAAAAAcAA0AAAAAAAAAAAAcAA4AAAAAAAAAAAAcAA8AAAAAAAAAAAAbAA8AAAAAAAAAAAAaAA8AAAAAAAAAAAAZAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAWAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAUAA8AAAAAAAAAAAATAA8AAAAAAAAAAAASAA8AAAAAAAAAAAARAA8AAAAAAAAAAAAQAA8AAAAAAAAAAAAPAA8AAAAAAAAAAAAOAA8AAAAAAAAAAAANAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAKAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAADAA8AAAAAAAAAAAACAA8AAAAAAAAAAAABAA8AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_oxhuh")
+
+[node name="BlueButton" parent="." instance=ExtResource("3_qox24")]
+position = Vector2(71, 52)
+
+[node name="Box" parent="." instance=ExtResource("4_cr8ts")]
+position = Vector2(268, 97)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(229, 131)
+zoom = Vector2(2.5, 2.5)
+
+[node name="Hole" parent="." instance=ExtResource("5_e5byi")]
+position = Vector2(335, 172)

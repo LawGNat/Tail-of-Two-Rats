@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [global_group]
 
 player=""
+box=""
 
 [input]
 
@@ -55,6 +56,8 @@ click={
 
 2d_physics/layer_1="Level"
 2d_physics/layer_2="Player"
+2d_physics/layer_3="Buttons"
+2d_physics/layer_4="Hole"
 2d_physics/layer_5="Pushable"
 
 [physics]
