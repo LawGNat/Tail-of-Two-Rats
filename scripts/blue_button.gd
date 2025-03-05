@@ -1,5 +1,6 @@
 extends Area2D
 
+
 @onready var sprite = $Sprite2D
 
 @export var idle_texture: Texture2D

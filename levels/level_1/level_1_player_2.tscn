@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=4 uid="uid://btjp3kix37uf7"]
 
-[ext_resource type="PackedScene" uid="uid://7xvfffii4qf6" path="res://scenes/player.tscn" id="1_0qhh4"]
+[ext_resource type="PackedScene" uid="uid://7xvfffii4qf6" path="res://player/player.tscn" id="1_0qhh4"]
 [ext_resource type="Texture2D" uid="uid://r2napf88kif7" path="res://assets/sprites/level/wall.png" id="2_5nt22"]
-[ext_resource type="PackedScene" uid="uid://d1un5c5i7tfn0" path="res://scenes/hole.tscn" id="3_2r1yq"]
+[ext_resource type="PackedScene" uid="uid://d1un5c5i7tfn0" path="res://interactables/hole.tscn" id="3_2r1yq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oqg5n"]
 

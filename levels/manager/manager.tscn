@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dau61mdixlkny"]
+
+[ext_resource type="Script" uid="uid://c3ukcrdg722a0" path="res://levels/manager/manager.gd" id="1_m3bga"]
+[ext_resource type="PackedScene" uid="uid://dkvty6imsii7t" path="res://levels/level_1/level_1_player_1.tscn" id="2_1shed"]
+[ext_resource type="Script" uid="uid://dmvim5frf1auw" path="res://levels/manager/level_spawner.gd" id="3_h3fqa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l2c7b"]
+font_size = 72
+
+[node name="Manager" type="Node2D" node_paths=PackedStringArray("level_container", "test_label")]
+script = ExtResource("1_m3bga")
+level_container = NodePath("LevelContainer")
+level_scene = ExtResource("2_1shed")
+test_label = NodePath("TestUI/TestLabel")
+
+[node name="LevelContainer" type="Node" parent="."]
+
+[node name="LevelSpawner" type="Node" parent="." node_paths=PackedStringArray("level_container", "manager")]
+script = ExtResource("3_h3fqa")
+level_container = NodePath("../LevelContainer")
+auto_spawn_list = Array[PackedScene]([ExtResource("2_1shed")])
+manager = NodePath("..")
+
+[node name="TestUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TestLabel" type="Label" parent="TestUI"]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 246.0
+offset_right = 749.0
+offset_bottom = 345.0
+text = "default poop"
+label_settings = SubResource("LabelSettings_l2c7b")

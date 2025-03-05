@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var player_id: int = 1
+#@export var player_id: int = 1
 @export var speed = 400
 @export var rotation_speed = 30.0
 @export var push_force = 50.0
@@ -9,6 +9,21 @@ extends CharacterBody2D
 @export var player_2_frames: SpriteFrames
 
 @onready var animation = $AnimatedSprite2D
+
+var player_state = {
+	"id": -1,
+	"position": global_position,
+	"animation": "idle"
+}
+
+var Playroom = JavaScriptBridge.get_interface("Playroom")
+var jsBridgeReferences = []
+
+
+func bridgeToJS(cb):
+	var jsCallback = JavaScriptBridge.create_callback(cb)
+	jsBridgeReferences.push_back(jsCallback)
+	return jsCallback
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -40,8 +55,40 @@ func _physics_process(_delta):
 				
 			collider.linear_damp = 3
 			
+	update_player_state()
+			
 func _ready() -> void:
 	if player_id == 1:
 		animation.sprite_frames = player_1_frames
 	else:
 		animation.sprite_frames = player_2_frames
+		
+	if not Playroom.isHost():
+		Playroom.onStateChange("players", bridgeToJS(onPlayerStateChange))
+		Playroom.getState("players", bridgeToJS(onInitialStateReceived))
+
+func update_player_state():
+	player_state["position"] = global_position
+	player_state["animation"] = animation.animation
+	Playroom.setState("players", player_state)
+	
+func onInitialStateReceived(updated_state):
+	for state in updated_state:
+		if state["id"] == player_id:
+			continue
+		var player_instance = get_node(state["id"])
+		if player_instance:
+			player_instance.global_position = state["position"]
+			var anim_player = player_instance.get_node("AnimatedSprite2D")
+			anim_player.play(state["animation"])
+			
+func onPlayerStateChange(updated_state):
+	for state in updated_state:
+		if state["id"] == player_id:
+			continue
+		var player_instance = get_node(state["id"])
+		if player_instance:
+			player_instance.global_position = state["position"]
+			var anim_player = player_instance.get_node("AnimatedSprite2D")
+			anim_player.play(state["animation"])
+				
