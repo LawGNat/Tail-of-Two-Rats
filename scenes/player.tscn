@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://7xvfffii4qf6"]
+[gd_scene load_steps=15 format=3 uid="uid://7xvfffii4qf6"]
 
 [ext_resource type="Script" uid="uid://bukqvqakgf8lo" path="res://scripts/player.gd" id="1_eng8u"]
 [ext_resource type="Texture2D" uid="uid://ci7f3agqhqr31" path="res://assets/sprites/player1/rat1.png" id="2_dn18u"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cntuyc366s4j0" path="res://assets/sprites/player2/rat11.png" id="5_smehm"]
 [ext_resource type="Texture2D" uid="uid://bycxlfyquq3ke" path="res://assets/sprites/player2/rat12.png" id="6_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://m306w3cc1grc" path="res://assets/sprites/player2/rat13.png" id="7_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://vpts2vphvdyc" path="res://assets/sprites/ui/sendcheck1.png" id="9_ur7pv"]
+[ext_resource type="Script" uid="uid://gh7gwva7gfa4" path="res://scenes/thought_bubble.gd" id="9_y4r1p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d2wvv"]
 animations = [{
@@ -102,3 +104,20 @@ shape = SubResource("RectangleShape2D_r0icn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vobpp")
 animation = &"idle"
+
+[node name="ThoughtBubble" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_y4r1p")
+
+[node name="ThoughtBubbleSprite" type="TextureRect" parent="ThoughtBubble"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -53.0
+offset_right = 47.0
+offset_bottom = -13.0
+texture = ExtResource("9_ur7pv")

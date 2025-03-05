@@ -1,11 +1,17 @@
-[gd_scene load_steps=11 format=4 uid="uid://dkvty6imsii7t"]
+[gd_scene load_steps=17 format=4 uid="uid://dkvty6imsii7t"]
 
+[ext_resource type="Script" uid="uid://d013pgyo5tene" path="res://scenes/level.gd" id="1_2qwhm"]
 [ext_resource type="PackedScene" uid="uid://7xvfffii4qf6" path="res://scenes/player.tscn" id="1_w8ldq"]
 [ext_resource type="Texture2D" uid="uid://r2napf88kif7" path="res://assets/sprites/level/wall.png" id="2_xgw00"]
 [ext_resource type="Texture2D" uid="uid://wcy64oowpng0" path="res://assets/sprites/level/blue_wall.png" id="3_pvq75"]
 [ext_resource type="PackedScene" uid="uid://d026447uo25wn" path="res://scenes/blue_button.tscn" id="3_qox24"]
 [ext_resource type="PackedScene" uid="uid://p5j580kk3i8x" path="res://scenes/box.tscn" id="4_cr8ts"]
 [ext_resource type="PackedScene" uid="uid://d1un5c5i7tfn0" path="res://scenes/hole.tscn" id="5_e5byi"]
+[ext_resource type="Script" uid="uid://d0550e3m0axp1" path="res://scenes/emote_control.gd" id="7_1su8b"]
+[ext_resource type="Texture2D" uid="uid://b2iwwqejqrpqc" path="res://assets/sprites/ui/checkmark.png" id="7_kbejy"]
+[ext_resource type="Texture2D" uid="uid://chxk8qreovdxd" path="res://assets/sprites/ui/xmark.png" id="8_1su8b"]
+[ext_resource type="Texture2D" uid="uid://dgx83iwy7avnw" path="res://assets/sprites/ui/eyedrop.png" id="9_2qwhm"]
+[ext_resource type="Texture2D" uid="uid://difb7i608ro1u" path="res://assets/sprites/ui/eyedropmouse.png" id="12_d2qjl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oqg5n"]
 
@@ -29,6 +35,7 @@ sources/0 = SubResource("TileSetAtlasSource_uf3vl")
 sources/1 = SubResource("TileSetAtlasSource_jsc0p")
 
 [node name="Level1Player1" type="Node2D"]
+script = ExtResource("1_2qwhm")
 
 [node name="Player" parent="." instance=ExtResource("1_w8ldq")]
 position = Vector2(158, 141)
@@ -44,8 +51,46 @@ position = Vector2(71, 52)
 position = Vector2(268, 97)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(229, 131)
-zoom = Vector2(2.5, 2.5)
+position = Vector2(224, 143)
+zoom = Vector2(2.25, 2.25)
 
 [node name="Hole" parent="." instance=ExtResource("5_e5byi")]
 position = Vector2(335, 172)
+
+[node name="EmoteControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_1su8b")
+
+[node name="CheckmarkButton" type="TextureButton" parent="EmoteControl"]
+layout_mode = 0
+offset_left = -31.0
+offset_right = 9.0
+offset_bottom = 40.0
+texture_normal = ExtResource("7_kbejy")
+
+[node name="XMarkButton" type="TextureButton" parent="EmoteControl"]
+layout_mode = 0
+offset_left = -31.0
+offset_top = 32.0
+offset_right = 9.0
+offset_bottom = 72.0
+texture_normal = ExtResource("8_1su8b")
+
+[node name="EyedropButton" type="TextureButton" parent="EmoteControl"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 65.0
+offset_right = 8.0
+offset_bottom = 105.0
+texture_normal = ExtResource("9_2qwhm")
+
+[node name="EyedropMouse" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_d2qjl")
+
+[connection signal="pressed" from="EmoteControl/CheckmarkButton" to="EmoteControl" method="_on_checkmark_button_pressed"]
+[connection signal="pressed" from="EmoteControl/XMarkButton" to="EmoteControl" method="_on_x_mark_button_pressed"]
+[connection signal="pressed" from="EmoteControl/EyedropButton" to="EmoteControl" method="_on_eyedrop_button_pressed"]

@@ -43,7 +43,6 @@ func remove_blue_walls():
 		if tile_data and tile_data.get_custom_data("type") == "blue_wall":
 			removed_tiles.append({"position": cell, "tile_id": tile_id})
 			tilemap.set_cell(cell, -1, Vector2i(0, 0), 0)
-			print(tilemap.get_cell_source_id(cell))
 			
 func restore_blue_walls():
 	for tile in removed_tiles:

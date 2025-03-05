@@ -45,3 +45,9 @@ func _ready() -> void:
 		animation.sprite_frames = player_1_frames
 	else:
 		animation.sprite_frames = player_2_frames
+
+func set_emote(emote_name: String):
+	$ThoughtBubble.set_emote(emote_name)
+
+func set_color_emote(selected_color: Color):
+	$ThoughtBubble.set_color_emote(selected_color)
