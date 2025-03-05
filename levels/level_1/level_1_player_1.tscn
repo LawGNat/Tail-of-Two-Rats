@@ -40,7 +40,6 @@ tile_set = SubResource("TileSet_oxhuh")
 position = Vector2(89, 147)
 
 [node name="SpawnPoint_1" type="Node2D" parent="----- Players -----"]
-position = Vector2(253, 155)
 
 [node name="----- Interactables -----" type="Node" parent="."]
 

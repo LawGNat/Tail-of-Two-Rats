@@ -48,9 +48,6 @@ func onPlayerJoin(args):
 		players.append(state)
 		print("Player ID assigned: ", state.id)
 	#print("new player joined: ", state.id)
-	
-		players.append(args[0])
-		#print(players, args)
 	 
 		# Listen to onQuit event
 		state.onQuit(bridgeToJS(onPlayerQuit))
